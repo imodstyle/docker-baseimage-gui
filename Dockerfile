@@ -168,7 +168,7 @@ RUN \
     sed "s/UNIQUE_VERSION/$(date | md5sum | cut -c1-10)/g" -i /opt/noVNC/index.html
 RUN \
     # Generate favicons.
-    APP_ICON_URL=https://github.com/jlesage/docker-templates/raw/master/jlesage/images/generic-app-icon.png && \
+    APP_ICON_URL=https://raw.githubusercontent.com/imodstyle/docker-baseimage-gui/master/img/generic-app-icon.png && \
     install_app_icon.sh --no-tools-install "$APP_ICON_URL"
 
 # Generate default DH params.
