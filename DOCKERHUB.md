@@ -1,7 +1,4 @@
-# A minimal docker baseimage to ease creation of X graphical application containers
-[![Release](https://img.shields.io/github/release/jlesage/docker-baseimage-gui.svg?logo=github&style=for-the-badge)](https://github.com/jlesage/docker-baseimage-gui/releases/latest)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/jlesage/docker-baseimage-gui/build-baseimage.yml?logo=github&branch=master&style=for-the-badge)](https://github.com/jlesage/docker-baseimage-gui/actions/workflows/build-baseimage.yml)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=for-the-badge)](https://paypal.me/JocelynLeSage)
+# A minimal docker baseimage to ease creation of X graphical application containers based of Jlesage
 
 This is a docker baseimage that can be used to create containers able to run
 any X application on a headless server very easily.  The application's GUI
@@ -14,28 +11,12 @@ Different docker images are available:
 
 | Base Distribution  | Docker Image Base Tag | Size |
 |--------------------|-----------------------|------|
-| [Alpine 3.14]      | alpine-3.14           | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/alpine-3.14-v4?style=for-the-badge)](#)  |
-| [Alpine 3.15]      | alpine-3.15           | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/alpine-3.15-v4?style=for-the-badge)](#)  |
-| [Alpine 3.16]      | alpine-3.16           | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/alpine-3.16-v4?style=for-the-badge)](#)  |
-| [Alpine 3.17]      | alpine-3.17           | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/alpine-3.17-v4?style=for-the-badge)](#)  |
 | [Alpine 3.18]      | alpine-3.18           | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/alpine-3.18-v4?style=for-the-badge)](#)  |
-| [Debian 10]        | debian-10             | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/debian-10-v4?style=for-the-badge)](#)    |
 | [Debian 11]        | debian-11             | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/debian-11-v4?style=for-the-badge)](#)    |
-| [Ubuntu 16.04 LTS] | ubuntu-16.04          | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/ubuntu-16.04-v4?style=for-the-badge)](#) |
-| [Ubuntu 18.04 LTS] | ubuntu-18.04          | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/ubuntu-18.04-v4?style=for-the-badge)](#) |
-| [Ubuntu 20.04 LTS] | ubuntu-20.04          | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/ubuntu-20.04-v4?style=for-the-badge)](#) |
 | [Ubuntu 22.04 LTS] | ubuntu-22.04          | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/ubuntu-22.04-v4?style=for-the-badge)](#) |
 
-[Alpine 3.14]: https://alpinelinux.org
-[Alpine 3.15]: https://alpinelinux.org
-[Alpine 3.16]: https://alpinelinux.org
-[Alpine 3.17]: https://alpinelinux.org
 [Alpine 3.18]: https://alpinelinux.org
-[Debian 10]: https://www.debian.org/releases/buster/
 [Debian 11]: https://www.debian.org/releases/bullseye/
-[Ubuntu 16.04 LTS]: http://releases.ubuntu.com/16.04/
-[Ubuntu 18.04 LTS]: http://releases.ubuntu.com/18.04/
-[Ubuntu 20.04 LTS]: http://releases.ubuntu.com/20.04/
 [Ubuntu 22.04 LTS]: http://releases.ubuntu.com/22.04/
 
 ### Content
@@ -94,7 +75,7 @@ terminal.
 In `Dockerfile`:
 ```Dockerfile
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.15-v4
+FROM imodstyle/baseimage-gui:alpine-3.15-v4
 
 # Install xterm.
 RUN add-pkg xterm
@@ -129,5 +110,5 @@ http://[HOST IP ADDR]:5800
 
 ## Documentation
 
-Full documentation is available at https://github.com/jlesage/docker-baseimage-gui.
+Full documentation is available at https://github.com/imodstyle/docker-baseimage-gui.
 
