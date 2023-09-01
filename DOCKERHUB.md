@@ -5,19 +5,6 @@ any X application on a headless server very easily.  The application's GUI
 is accessed through a modern web browser (no installation or configuration
 needed on the client side) or via any VNC client.
 
-## Images
-
-Different docker images are available:
-
-| Base Distribution  | Docker Image Base Tag | Size |
-|--------------------|-----------------------|------|
-| [Alpine 3.18]      | alpine-3.18           | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/alpine-3.18-v4?style=for-the-badge)](#)  |
-| [Debian 11]        | debian-11             | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/debian-11-v4?style=for-the-badge)](#)    |
-| [Ubuntu 22.04 LTS] | ubuntu-22.04          | [![](https://img.shields.io/docker/image-size/jlesage/baseimage-gui/ubuntu-22.04-v4?style=for-the-badge)](#) |
-
-[Alpine 3.18]: https://alpinelinux.org
-[Debian 11]: https://www.debian.org/releases/bullseye/
-[Ubuntu 22.04 LTS]: http://releases.ubuntu.com/22.04/
 
 ### Content
 
