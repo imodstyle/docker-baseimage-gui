@@ -234,15 +234,21 @@ jobs:
           readme-filepath: DOCKERHUB.md
 
   notification:
-    name: Notification
-    needs: [ build, post-build ]
-    runs-on: ubuntu-20.04
-    if: ${{ always() }}
-
-    steps:
-      - name: Pushover notification
-        uses: desiderati/github-action-pushover@v1
-        with:
-          job-status: ${{ needs.build.result }}
-          pushover-api-token: ${{ secrets.PUSHOVER_API_TOKEN }}
-          pushover-user-key: ${{ secrets.PUSHOVER_USER_KEY }}
+      name: Notification
+      needs: [ build ]
+      runs-on: ubuntu-20.04
+      if: ${{ always() && github.event_name != 'pull_request' }}
+      
+        steps:
+        - name: Telegram notification
+          uses: appleboy/telegram-action@master
+          with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            message: |
+              ${{ github.actor }} created commit:
+              Commit message: ${{ github.event.commits[0].message }}
+                    
+              Repository: ${{ github.repository }}
+                    
+              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}

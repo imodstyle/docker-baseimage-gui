@@ -1,4 +1,4 @@
-# A minimal docker baseimage to ease creation of X graphical application containers based of Jlesage
+# A minimal docker baseimage to ease creation of X graphical application containers based of Jlesage, this intended for educational purpose only
 
 This is a docker baseimage that can be used to create containers able to run
 any X application on a headless server very easily.  The application's GUI
