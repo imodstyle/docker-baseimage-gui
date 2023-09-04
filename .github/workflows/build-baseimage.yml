@@ -234,7 +234,7 @@ jobs:
 
   notification:
     name: Notification
-    needs: [ build ]
+    needs: [ build, post-build ]
     runs-on: ubuntu-20.04
     if: ${{ always() && github.event_name != 'pull_request' }}
       
