@@ -32,7 +32,7 @@ FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 FROM --platform=$BUILDPLATFORM alpine:3.15 AS upx
 RUN apk --no-cache add build-base curl make cmake git && \
     mkdir /tmp/upx && \
-    curl -# -L https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
+    curl -# -L https://github.com/upx/upx/releases/download/v4.1.0/upx-4.1.0-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
     make -C /tmp/upx build/release-gcc -j$(nproc) && \
     cp -v /tmp/upx/build/release-gcc/upx /usr/bin/upx
 
@@ -110,12 +110,10 @@ RUN apk --no-cache add libcap && setcap cap_net_bind_service=ep /tmp/nginx-insta
 # Build noVNC.
 FROM --platform=$BUILDPLATFORM alpine:3.15 AS noVNC
 ARG NOVNC_VERSION=1.4.0
-ARG BOOTSTRAP_VERSION=5.1.3
-ARG BOOTSTRAP_NIGHTSHADE_VERSION=1.1.3
+ARG BOOTSTRAP_VERSION=5.3.1
 ARG FONTAWESOME_VERSION=4.7.0
 ARG NOVNC_URL=https://github.com/novnc/noVNC/archive/refs/tags/v${NOVNC_VERSION}.tar.gz
 ARG BOOTSTRAP_URL=https://github.com/twbs/bootstrap/releases/download/v${BOOTSTRAP_VERSION}/bootstrap-${BOOTSTRAP_VERSION}-dist.zip
-ARG BOOTSTRAP_NIGHTSHADE_URL=https://github.com/vinorodrigues/bootstrap-dark-5/archive/refs/tags/v${BOOTSTRAP_NIGHTSHADE_VERSION}.tar.gz
 ARG FONTAWESOME_URL=https://fontawesome.com/v${FONTAWESOME_VERSION}/assets/font-awesome-${FONTAWESOME_VERSION}.zip
 WORKDIR /tmp
 COPY helpers/* /usr/bin/
@@ -146,17 +144,8 @@ RUN \
     #       Nightshade.
     curl -sS -L -O ${BOOTSTRAP_URL} && \
     unzip bootstrap-${BOOTSTRAP_VERSION}-dist.zip && \
-    #cp -v bootstrap-${BOOTSTRAP_VERSION}-dist/css/bootstrap.min.css /opt/noVNC/app/styles/ && \
+    cp -v bootstrap-${BOOTSTRAP_VERSION}-dist/css/bootstrap.min.css /opt/noVNC/app/styles/ && \
     cp -v bootstrap-${BOOTSTRAP_VERSION}-dist/js/bootstrap.bundle.min.js* /opt/noVNC/app/
-RUN \
-    # Install Bootstrap Nightshade.
-    mkdir /tmp/bootstrap-nightshade && \
-    curl -# -L ${BOOTSTRAP_NIGHTSHADE_URL} | tar -xz --strip 1 -C /tmp/bootstrap-nightshade && \
-    cleancss \
-        -O1 \
-        --format breakWith=lf \
-        --output /opt/noVNC/app/styles/bootstrap-nightshade.min.css \
-        /tmp/bootstrap-nightshade/dist/css/bootstrap-nightshade.css
 RUN \
     # Install Font Awesome.
     curl -sS -L -O ${FONTAWESOME_URL} && \
