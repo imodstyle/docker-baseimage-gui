@@ -32,7 +32,7 @@ FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 FROM --platform=$BUILDPLATFORM alpine:3.18 AS upx
 RUN apk add --no-cache build-base curl make cmake git && \
     mkdir /tmp/upx && \
-    curl -# -L https://github.com/upx/upx/releases/download/v4.1.0/upx-4.1.0-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
+    curl -# -L https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
     make -C /tmp/upx build/release-gcc -j$(nproc) && \
     cp -v /tmp/upx/build/release-gcc/upx /usr/bin/upx
 
