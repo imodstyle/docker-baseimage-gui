@@ -216,8 +216,8 @@ COPY --link --from=noVNC /opt/noVNC /opt/noVNC
 
 # Set environment variables.
 ENV \
-    DISPLAY_WIDTH=1920 \
-    DISPLAY_HEIGHT=1080 \
+    DISPLAY_WIDTH=1280 \
+    DISPLAY_HEIGHT=720 \
     DARK_MODE=0 \
     SECURE_CONNECTION=0 \
     SECURE_CONNECTION_VNC_METHOD=SSL \
