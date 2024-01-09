@@ -2,7 +2,7 @@
 #
 # baseimage-gui Dockerfile
 #
-# https://github.com/imodstyle/docker-baseimage-gui
+# https://github.com/jlesage/docker-baseimage-gui
 #
 
 ARG BASEIMAGE=unknown
@@ -32,9 +32,9 @@ FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 FROM --platform=$BUILDPLATFORM alpine:3.15 AS upx
 RUN apk --no-cache add build-base curl make cmake git && \
     mkdir /tmp/upx && \
-    curl -# -L https://github.com/upx/upx/releases/download/v4.1.0/upx-4.1.0-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
-    make -C /tmp/upx build/extra/gcc/release -j$(nproc) && \
-    cp -v /tmp/upx/build/extra/gcc/release/upx /usr/bin/upx
+    curl -# -L https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
+    make -C /tmp/upx build/release-gcc -j$(nproc) && \
+    cp -v /tmp/upx/build/release-gcc/upx /usr/bin/upx
 
 # Build TigerVNC server.
 FROM --platform=$BUILDPLATFORM alpine:3.15 AS tigervnc
@@ -110,7 +110,7 @@ RUN apk --no-cache add libcap && setcap cap_net_bind_service=ep /tmp/nginx-insta
 # Build noVNC.
 FROM --platform=$BUILDPLATFORM alpine:3.15 AS noVNC
 ARG NOVNC_VERSION=1.4.0
-ARG BOOTSTRAP_VERSION=5.3.2
+ARG BOOTSTRAP_VERSION=5.1.3
 ARG BOOTSTRAP_NIGHTSHADE_VERSION=1.1.3
 ARG FONTAWESOME_VERSION=4.7.0
 ARG NOVNC_URL=https://github.com/novnc/noVNC/archive/refs/tags/v${NOVNC_VERSION}.tar.gz
@@ -168,7 +168,7 @@ RUN \
     sed "s/UNIQUE_VERSION/$(date | md5sum | cut -c1-10)/g" -i /opt/noVNC/index.html
 RUN \
     # Generate favicons.
-    APP_ICON_URL=https://raw.githubusercontent.com/imodstyle/docker-baseimage-gui/master/img/generic-app-icon.png && \
+    APP_ICON_URL=https://github.com/jlesage/docker-templates/raw/master/jlesage/images/generic-app-icon.png && \
     install_app_icon.sh --no-tools-install "$APP_ICON_URL"
 
 # Generate default DH params.
@@ -238,5 +238,5 @@ LABEL \
       org.label-schema.name="baseimage-gui" \
       org.label-schema.description="A minimal docker baseimage to ease creation of X graphical application containers" \
       org.label-schema.version="${IMAGE_VERSION}" \
-      org.label-schema.vcs-url="https://github.com/imodstyle/docker-baseimage-gui" \
+      org.label-schema.vcs-url="https://github.com/jlesage/docker-baseimage-gui" \
       org.label-schema.schema-version="1.0"
