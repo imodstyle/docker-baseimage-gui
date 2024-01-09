@@ -13,7 +13,7 @@ set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error.
 
 # Define software versions.
-FONTCONFIG_VERSION=2.15.0
+FONTCONFIG_VERSION=2.14.0
 
 # Define software download URLs.
 FONTCONFIG_URL=https://www.freedesktop.org/software/fontconfig/release/fontconfig-${FONTCONFIG_VERSION}.tar.gz
