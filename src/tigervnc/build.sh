@@ -15,13 +15,13 @@ set -u # Treat unset variables as an error.
 
 # Define software versions.
 TIGERVNC_VERSION=1.13.1
-XSERVER_VERSION=1.20.14
+XSERVER_VERSION=21.1.10
 
 # Use the same versions has Alpine 3.15.
-GNUTLS_VERSION=3.7.1
-LIBXFONT2_VERSION=2.0.5
-LIBFONTENC_VERSION=1.1.4
-LIBTASN1_VERSION=4.18.0
+GNUTLS_VERSION=3.8.2
+LIBXFONT2_VERSION=2.0.6
+LIBFONTENC_VERSION=1.1.7
+LIBTASN1_VERSION=4.19.0
 LIBXSHMFENCE_VERSION=1.3
 
 # If the XKeyboardConfig version is too recent compared to xorgproto/libX11,
