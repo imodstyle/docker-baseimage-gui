@@ -29,7 +29,7 @@ ARG DEBIAN_PKGS="\
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
 # Build UPX.
-FROM --platform=$BUILDPLATFORM alpine:3.18 AS upx
+FROM --platform=$BUILDPLATFORM alpine:3.15 AS upx
 RUN apk --no-cache add build-base curl make cmake git && \
     mkdir /tmp/upx && \
     curl -# -L https://github.com/upx/upx/releases/download/v4.1.0/upx-4.1.0-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
