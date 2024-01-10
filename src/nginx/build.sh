@@ -135,4 +135,3 @@ find /tmp/nginx-install/etc/nginx ! -name "mime.types" -type f -exec rm -v {} ';
 rm -r \
     /tmp/nginx-install/var \
     /tmp/nginx-install/config \
-

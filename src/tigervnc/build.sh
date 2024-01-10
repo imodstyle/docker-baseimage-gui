@@ -418,4 +418,3 @@ make -C /tmp/xkbcomp -j$(nproc)
 
 log "Installing xkbcomp..."
 make DESTDIR=/tmp/xkbcomp-install -C /tmp/xkbcomp install
-
