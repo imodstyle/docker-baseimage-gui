@@ -9,7 +9,7 @@ set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error.
 
 # Define software versions.
-YAD_VERSION=0.42.78
+YAD_VERSION=0.42.43
 
 # Use the same versions has Alpine 3.15.
 PANGO_VERSION=1.48.10
