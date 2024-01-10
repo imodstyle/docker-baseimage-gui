@@ -15,7 +15,7 @@ set -u # Treat unset variables as an error.
 
 # Define software versions.
 TIGERVNC_VERSION=1.13.1
-XSERVER_VERSION=21.1.10
+XSERVER_VERSION=1.20.14
 
 # Use the same versions has Alpine 3.15.
 GNUTLS_VERSION=3.8.2
