@@ -37,7 +37,7 @@ RUN apk --no-cache add build-base curl make cmake git && \
     cp -v /tmp/upx/build/extra/gcc/release/upx /usr/bin/upx
 
 # Build TigerVNC server.
-FROM --platform=$BUILDPLATFORM alpine:3.18 AS tigervnc
+FROM --platform=$BUILDPLATFORM alpine:3.15 AS tigervnc
 ARG TARGETPLATFORM
 COPY --from=xx / /
 COPY src/tigervnc /build
@@ -49,14 +49,14 @@ RUN upx /tmp/tigervnc-install/usr/bin/Xvnc
 RUN upx /tmp/tigervnc-install/usr/bin/vncpasswd
 
 # Build Fontconfig.
-FROM --platform=$BUILDPLATFORM alpine:3.18 AS fontconfig
+FROM --platform=$BUILDPLATFORM alpine:3.15 AS fontconfig
 ARG TARGETPLATFORM
 COPY --from=xx / /
 COPY src/fontconfig/build.sh /tmp/build-fontconfig.sh
 RUN /tmp/build-fontconfig.sh
 
 # Build Openbox.
-FROM --platform=$BUILDPLATFORM alpine:3.18 AS openbox
+FROM --platform=$BUILDPLATFORM alpine:3.15 AS openbox
 ARG TARGETPLATFORM
 COPY --from=xx / /
 COPY --from=fontconfig /tmp/fontconfig-install /tmp/fontconfig-install
@@ -71,7 +71,7 @@ RUN upx /tmp/openbox-install/usr/bin/obxprop
 
 # Build xdpyprobe.
 # Used to determine if the X server (Xvnc) is ready.
-FROM --platform=$BUILDPLATFORM alpine:3.18 AS xdpyprobe
+FROM --platform=$BUILDPLATFORM alpine:3.15 AS xdpyprobe
 ARG TARGETPLATFORM
 COPY --from=xx / /
 COPY src/xdpyprobe /tmp/xdpyprobe
