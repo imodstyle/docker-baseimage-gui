@@ -12,7 +12,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Define software versions.
 OPENBOX_VERSION=3.6.1
-PANGO_VERSION=1.51.0
+PANGO_VERSION=1.49.3
 LIBXRANDR_VERSION=1.5.3
 
 # Define software download URLs.
