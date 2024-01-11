@@ -9,7 +9,7 @@ set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error.
 
 # Define software versions.
-NGINX_VERSION=1.20.1
+NGINX_VERSION=1.25.3
 NGINXWEBSOCKIFYMOD_VERSION=0.0.3
 
 # Define software download URLs.
