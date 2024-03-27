@@ -45,6 +45,8 @@ apk --no-cache add \
     pkgconfig \
     patch \
     glib-dev \
+    python3 \
+    py3-pip \
 
 xx-apk --no-cache --no-scripts add \
     g++ \
@@ -75,6 +77,9 @@ xx-apk --no-cache --no-scripts add \
     libffi-dev \
     xz-dev \
     brotli-static \
+
+# update meson
+python3 -m pip install meson
 
 # Copy the xx-clang wrapper.  Openbox compilation uses libtool.  During the link
 # phase, libtool re-orders all arguments from LDFLAGS.  Thus, libraries are no
