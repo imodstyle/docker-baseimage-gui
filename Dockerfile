@@ -29,7 +29,7 @@ ARG DEBIAN_PKGS="\
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
 # Build UPX.
-FROM --platform=$BUILDPLATFORM alpine:3.15 AS upx
+FROM --platform=$BUILDPLATFORM alpine:3.18 AS upx
 RUN apk --no-cache add build-base curl make cmake git && \
     mkdir /tmp/upx && \
     curl -# -L https://github.com/upx/upx/releases/download/v4.1.0/upx-4.1.0-src.tar.xz | tar xJ --strip 1 -C /tmp/upx && \
@@ -49,14 +49,14 @@ RUN upx /tmp/tigervnc-install/usr/bin/Xvnc
 RUN upx /tmp/tigervnc-install/usr/bin/vncpasswd
 
 # Build Fontconfig.
-FROM --platform=$BUILDPLATFORM alpine:3.15 AS fontconfig
+FROM --platform=$BUILDPLATFORM alpine:3.18 AS fontconfig
 ARG TARGETPLATFORM
 COPY --from=xx / /
 COPY src/fontconfig/build.sh /tmp/build-fontconfig.sh
 RUN /tmp/build-fontconfig.sh
 
 # Build Openbox.
-FROM --platform=$BUILDPLATFORM alpine:3.15 AS openbox
+FROM --platform=$BUILDPLATFORM alpine:3.18 AS openbox
 ARG TARGETPLATFORM
 COPY --from=xx / /
 COPY --from=fontconfig /tmp/fontconfig-install /tmp/fontconfig-install
