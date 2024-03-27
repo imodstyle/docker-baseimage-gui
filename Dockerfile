@@ -56,7 +56,7 @@ COPY src/fontconfig/build.sh /tmp/build-fontconfig.sh
 RUN /tmp/build-fontconfig.sh
 
 # Build Openbox.
-FROM --platform=$BUILDPLATFORM alpine:3.18.4 AS openbox
+FROM --platform=$BUILDPLATFORM alpine:3.15 AS openbox
 ARG TARGETPLATFORM
 COPY --from=xx / /
 COPY --from=fontconfig /tmp/fontconfig-install /tmp/fontconfig-install
