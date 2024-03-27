@@ -12,8 +12,8 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Define software versions.
 OPENBOX_VERSION=3.6.1
-PANGO_VERSION=1.49.3
-LIBXRANDR_VERSION=1.5.3
+PANGO_VERSION=1.52.1
+LIBXRANDR_VERSION=1.5.4
 
 # Define software download URLs.
 OPENBOX_URL=http://openbox.org/dist/openbox/openbox-${OPENBOX_VERSION}.tar.xz
